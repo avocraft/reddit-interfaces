@@ -65,7 +65,7 @@ export interface RedditListingInterface {
 		before?: string;
 		children: {
 			kind: string;
-			data: CommentInterface | ThreadInterface;
+			data: ChildrenDataInterface[];
 		};
 	};
 }
@@ -260,3 +260,5 @@ export interface ThreadInterface {
 		is_video: boolean;
 	};
 }
+
+type ChildrenDataInterface = CommentInterface | ThreadInterface;
