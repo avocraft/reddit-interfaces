@@ -56,17 +56,17 @@ export interface Awardings {
 
 // Kind "Listing"
 export interface RedditListingInterface {
-	// "Listing", "more", "t1", "t2", "t3", "t4", "t5"
+	// "Listing"
 	kind: string;
 	data: {
 		modhash: string;
 		dist: any;
-		after?: string;
-		before?: string;
 		children: {
 			kind: string;
-			data: ChildrenDataInterface[];
+			data: ChildrenInterface[];
 		};
+		after?: string;
+		before?: string;
 	};
 }
 
@@ -85,6 +85,7 @@ export interface CommentInterface {
 	// UUID
 	author_flair_template_id: string;
 	likes?: string;
+	replies: RedditListingInterface;
 	user_reports: string[];
 	saved: false;
 	id: string;
@@ -150,115 +151,130 @@ export interface CommentInterface {
 
 // t3
 export interface ThreadInterface {
-	kind: string;
-	data: {
-		approved_at_utc: Date;
-		subreddit: string;
-		selftext: string;
-		author_fullname: string;
-		saved: boolean;
-		mod_reason_title: string;
-		gilded: number;
-		clicked: boolean;
-		title: string;
-		link_flair_richtext: E_T[];
-		subreddit_name_prefixed: string;
-		hidden: boolean;
-		pwls: number;
-		link_flair_css_class: string;
-		downs: number;
-		thumbnail_height: number;
-		hide_score: boolean;
-		name: string;
-		quarantine: boolean;
-		link_flair_text_color: string;
-		author_flair_background_color?: string;
-		subreddit_type: string;
-		ups: number;
-		total_awards_received: number;
-		media_embed: object;
-		thumbnail_width: number;
-		author_flair_template_id: string;
-		is_original_content: boolean;
-		user_reports: string[];
-		secure_media: any;
-		is_reddit_media_domain: boolean;
-		is_meta: boolean;
-		category: string;
-		secure_media_embed: object;
-		link_flair_text: string;
-		can_mod_post: boolean;
-		score: number;
-		approved_by: string;
-		author_premium: boolean;
-		thumbnail: string;
-		edited: boolean;
-		author_flair_css_class: string;
-		author_flair_richtext: E_T[];
-		gildings: object;
-		post_hint: string;
-		content_categories: string[];
-		is_self: boolean;
-		mod_note: string;
-		created: number;
-		link_flair_type: string;
-		wls: number;
-		removed_by_category: string;
-		banned_by?: string;
-		author_flair_type: string;
-		domain: string;
-		allow_live_comments: boolean;
-		selftext_html: string;
-		likes: number;
-		suggested_sort: string;
-		banned_at_utc: Date;
-		view_count?: number;
-		archived: boolean;
-		no_follow: boolean;
-		is_crosspostable: boolean;
-		pinned: boolean;
-		over_18: boolean;
-		preview: {
-			images: Images[];
-			enabled: boolean;
-		};
-		all_awardings: Awardings[];
-		awarders: string[];
-		media_only: boolean;
-		can_gild: boolean;
-		spoiler: boolean;
-		locked: boolean;
-		author_flair_text: string;
-		visited: boolean;
-		removed_by?: string;
-		num_reports: number;
-		distinguished: any;
-		subreddit_id: string;
-		mod_reason_by?: string;
-		removal_reason?: string;
-		link_flair_background_color: string;
-		id: string;
-		is_robot_indexable: boolean;
-		report_reasons?: any;
-		author: string;
-		discussion_type?: any;
-		num_comments: number;
-		send_replies: boolean;
-		whitelist_status: string;
-		contest_mode: boolean;
-		mod_reports: [];
-		author_patreon_flair: boolean;
-		author_flair_text_color: string;
-		permalink: string;
-		parent_whitelist_status: string;
-		stickied: boolean;
-		url: string;
-		subreddit_subscribers: number;
-		created_utc: Date;
-		num_crossposts: number;
-		media?: any;
-		is_video: boolean;
+	approved_at_utc: Date;
+	subreddit: string;
+	selftext: string;
+	author_fullname: string;
+	saved: boolean;
+	mod_reason_title: string;
+	gilded: number;
+	clicked: boolean;
+	title: string;
+	link_flair_richtext: E_T[];
+	subreddit_name_prefixed: string;
+	hidden: boolean;
+	pwls: number;
+	link_flair_css_class: string;
+	downs: number;
+	thumbnail_height: number;
+	hide_score: boolean;
+	name: string;
+	quarantine: boolean;
+	link_flair_text_color: string;
+	author_flair_background_color?: string;
+	subreddit_type: string;
+	ups: number;
+	total_awards_received: number;
+	media_embed: object;
+	thumbnail_width: number;
+	author_flair_template_id: string;
+	is_original_content: boolean;
+	user_reports: string[];
+	secure_media: any;
+	is_reddit_media_domain: boolean;
+	is_meta: boolean;
+	category: string;
+	secure_media_embed: object;
+	link_flair_text: string;
+	can_mod_post: boolean;
+	score: number;
+	approved_by: string;
+	author_premium: boolean;
+	thumbnail: string;
+	edited: boolean;
+	author_flair_css_class: string;
+	author_flair_richtext: E_T[];
+	gildings: object;
+	post_hint: string;
+	content_categories: string[];
+	is_self: boolean;
+	mod_note: string;
+	created: number;
+	link_flair_type: string;
+	wls: number;
+	removed_by_category: string;
+	banned_by?: string;
+	author_flair_type: string;
+	domain: string;
+	allow_live_comments: boolean;
+	selftext_html: string;
+	likes: number;
+	suggested_sort: string;
+	banned_at_utc: Date;
+	view_count?: number;
+	archived: boolean;
+	no_follow: boolean;
+	is_crosspostable: boolean;
+	pinned: boolean;
+	over_18: boolean;
+	preview: {
+		images: Images[];
+		enabled: boolean;
 	};
+	all_awardings: Awardings[];
+	awarders: string[];
+	media_only: boolean;
+	can_gild: boolean;
+	spoiler: boolean;
+	locked: boolean;
+	author_flair_text: string;
+	visited: boolean;
+	removed_by?: string;
+	num_reports: number;
+	distinguished: any;
+	subreddit_id: string;
+	mod_reason_by?: string;
+	removal_reason?: string;
+	link_flair_background_color: string;
+	id: string;
+	is_robot_indexable: boolean;
+	report_reasons?: any;
+	author: string;
+	discussion_type?: any;
+	num_comments: number;
+	send_replies: boolean;
+	whitelist_status: string;
+	contest_mode: boolean;
+	mod_reports: [];
+	author_patreon_flair: boolean;
+	author_flair_text_color: string;
+	permalink: string;
+	parent_whitelist_status: string;
+	stickied: boolean;
+	url: string;
+	subreddit_subscribers: number;
+	created_utc: Date;
+	num_crossposts: number;
+	media?: any;
+	is_video: boolean;
 }
 
-type ChildrenDataInterface = CommentInterface | ThreadInterface;
+export interface MoreInterface {
+	count: number;
+	// t1_<ID>
+	name: string;
+	id: string;
+	parent_id: string;
+	depth: 1;
+	children: string[];
+}
+
+export type ChildrenDataInterface =
+	| CommentInterface
+	| ThreadInterface
+	| MoreInterface;
+
+export interface ChildrenInterface {
+	kind: string;
+	data: ChildrenDataInterface;
+}
