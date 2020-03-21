@@ -270,9 +270,9 @@ export interface MoreInterface {
 }
 
 export type ChildrenDataInterface =
-	| CommentInterface
-	| ThreadInterface
-	| MoreInterface;
+	& CommentInterface
+	& ThreadInterface
+ 	& MoreInterface;
 
 export interface ChildrenInterface {
 	kind: string;
