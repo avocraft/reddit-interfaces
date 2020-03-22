@@ -61,10 +61,7 @@ export interface RedditListingInterface {
 	data: {
 		modhash: string;
 		dist: any;
-		children: {
-			kind: string;
-			data: ChildrenInterface[];
-		};
+		children: ChildrenInterface[];
 		after?: string;
 		before?: string;
 	};
@@ -269,10 +266,9 @@ export interface MoreInterface {
 	children: string[];
 }
 
-export type ChildrenDataInterface =
-	& CommentInterface
-	& ThreadInterface
- 	& MoreInterface;
+export type ChildrenDataInterface = CommentInterface &
+	ThreadInterface &
+	MoreInterface;
 
 export interface ChildrenInterface {
 	kind: string;
