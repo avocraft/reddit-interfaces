@@ -1,6 +1,6 @@
 {
 	"name": "reddit-interfaces",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "reddit-interfaces.ts",
 	"description": "TypeScript Reddit Interfaces",
 	"scripts": {
