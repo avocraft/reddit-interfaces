@@ -82,7 +82,7 @@ export interface CommentInterface {
 	// UUID
 	author_flair_template_id: string;
 	likes?: string;
-	replies: RedditListingInterface;
+	replies: RedditListingInterface | '';
 	user_reports: string[];
 	saved: false;
 	id: string;
