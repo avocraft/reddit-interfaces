@@ -123,7 +123,7 @@ export interface CommentInterface {
 	subreddit_type: string;
 	can_gild: boolean;
 	subreddit: string;
-	author_flair_text_color: boolean;
+	author_flair_text_color: string;
 	score_hidden: boolean;
 	// '/r/<subreddit>/comments/<threadID>/<title>/<commentID>/'
 	permalink: string;
